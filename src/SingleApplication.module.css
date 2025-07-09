@@ -12,6 +12,7 @@
   text-align: left;
   border-right: 1px solid #eee;
   padding: 0 15px;
+  font-weight: bold;
 }
 
 .cell:last-child {
@@ -23,6 +24,7 @@
   font-size: 0.8rem;
   color: #999;
   margin-bottom: 5px;
+  font-weight: normal;
 }
 
 .email {
