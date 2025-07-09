@@ -19,3 +19,7 @@ Create hook for fetching applications.
 Prefer semantic list for list of applications - can later extend with WCAG compliant list support, or grid support and navigation if required.
 
 Single Application using margin below - can move to gap in Application, using flex column. Better reuse.
+
+Added button and loading state.
+
+Need new applications to combine with old. Use effect to merge. Disable button while loading.

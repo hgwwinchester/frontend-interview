@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useState} from "react";
+import React, {FC, useCallback, useEffect, useState} from "react";
 import styles from "./Applications.module.css";
 import {Button} from "./ui/Button/Button.tsx";
 import useApplicationsStore from "./useApplicationsStore.tsx";
@@ -24,15 +24,19 @@ const ApplicationsLoading: FC = () => {
 }
 
 const Applications = () => {
+  const [applications, setApplications] = useState<TApplication[]>([])
   const [page, setPage] = useState(0);
-  const {data: applications} = useApplicationsStore(page, 5)
+  const {data, error, isLoading} = useApplicationsStore(page, 5)
+
+  useEffect(() => setApplications(apps => [...apps, ...(data ?? [])]), [data, setApplications])
 
   const loadMoreFn = useCallback(() => setPage(page => page + 1), [setPage])
 
   return (
     <div className={styles.Applications}>
-      {applications ? <ApplicationsList applications={applications}/> : <ApplicationsLoading/>}
-      <Button className={styles.LoadMore} onClick={loadMoreFn}>
+      <ApplicationsList applications={applications}/>
+      {isLoading && <ApplicationsLoading/>}
+      <Button className={styles.LoadMore} onClick={loadMoreFn} disabled={isLoading} >
         Load more
       </Button>
     </div>
