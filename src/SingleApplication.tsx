@@ -28,7 +28,8 @@ const SingleApplication: FC<SingleApplicationProps> = ({application}) => {
       </div>
       <div className={styles.cell}>
         <sub>Email</sub>
-        {application.email}
+        {/* Potentially unsafe? Maybe needs verification. */}
+        <a className={styles.email} href={`mailto:${application.email}`}>{application.email}</a>
       </div>
       <div className={styles.cell}>
         <sub>Loan Amount</sub>

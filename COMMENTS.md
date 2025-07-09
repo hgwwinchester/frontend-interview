@@ -25,3 +25,5 @@ Added button and loading state.
 Need new applications to combine with old. Use effect to merge. Disable button while loading.
 
 Need to correctly format data in applications.
+
+Email should be link.
