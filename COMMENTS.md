@@ -32,3 +32,5 @@ Email should be link.
 Start testing - ordinarily would do alongside component development, but limited on time.
 
 Installed Mock Service Worker for API requests.
+
+Added basic application store test - no time for more <- lost time on project setup issues, i.e., ts-node and linting.
