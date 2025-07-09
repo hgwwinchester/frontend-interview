@@ -23,3 +23,5 @@ Single Application using margin below - can move to gap in Application, using fl
 Added button and loading state.
 
 Need new applications to combine with old. Use effect to merge. Disable button while loading.
+
+Need to correctly format data in applications.

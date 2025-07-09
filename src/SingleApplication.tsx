@@ -1,7 +1,21 @@
-import React from "react";
+import React, {FC, useMemo} from "react";
 import styles from "./SingleApplication.module.css";
+import {TApplication} from "./types/TApplication.ts";
 
-const SingleApplication = ({ application }) => {
+// Could replace the `/` with `-` using str replace, but best to keep simple
+const localeDate = (date: string) => new Date(date).toLocaleDateString()
+
+type SingleApplicationProps = {
+  application: TApplication
+}
+
+const SingleApplication: FC<SingleApplicationProps> = ({application}) => {
+  const loanAmount = useMemo(() => new Intl.NumberFormat("en-GB", {
+    style: 'currency',
+    currency: 'GBP'
+  }).format(application.loan_amount), [application.loan_amount])
+  const dateCreated = useMemo(() => localeDate(application.date_created), [application.date_created])
+  const dateExpired = useMemo(() => localeDate(application.expiry_date), [application.expiry_date])
   return (
     <div className={styles.SingleApplication}>
       <div className={styles.cell}>
@@ -18,15 +32,15 @@ const SingleApplication = ({ application }) => {
       </div>
       <div className={styles.cell}>
         <sub>Loan Amount</sub>
-        {application.loan_amount}
+        {loanAmount}
       </div>
       <div className={styles.cell}>
         <sub>Application Date</sub>
-        {application.date_created}
+        {dateCreated}
       </div>
       <div className={styles.cell}>
         <sub>Expiry date</sub>
-        {application.expiry_date}
+        {dateExpired}
       </div>
     </div>
   );
