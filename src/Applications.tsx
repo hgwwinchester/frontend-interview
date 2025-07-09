@@ -8,8 +8,13 @@ const Applications = () => {
 
   return (
     <div className={styles.Applications}>
-      <SingleApplication application={applications[0]} />
+      <ol className={styles.ApplicationsList}>
+        <li>
+          <SingleApplication application={applications[0]} />
+        </li>
+      </ol>
     </div>
+
   );
 };
 
